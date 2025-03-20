@@ -33,7 +33,7 @@ spec:
               key: JWT_SECRET
         resources:
           limits:
-            memory: "500Mi"
+            memory: "512Mi"
             cpu: "500m"
           requests:
             memory: "256Mi"
