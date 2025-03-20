@@ -16,7 +16,7 @@ spec:
         app: mongodb
     spec:
       containers:
-      - name: chatapp-conatainer
+      - name: chatapp-container
         image: nikithajain/mangodb:latest
         ports:
         - containerPort: 27017
