@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: chat-app
+  namespace: chatapp
 spec:
   replicas: 1
   selector:
@@ -15,22 +15,22 @@ spec:
     spec:
       containers:
       - name: backend
-        image: iemafzal/backend:v1
+        image: nikithajain/backend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5001
         env:
+        - name: NODE_ENV
+          value: production
         - name: MONGODB_URI
-          value: "mongodb://root:admin@mongodb:27017/chatApp?authSource=admin"
+          value: mongodb://mongoadmin:secret@mongodb:27017/dbname?authSource=admin
         - name: PORT
           value: "5001"
-        - name: NODE_ENV
-          value: "production"
         - name: JWT_SECRET
           valueFrom:
             secretKeyRef:
-              name: backend-secrets
-              key: jwt-secret
+              name: chatapp-secrets
+              key: JWT_SECRET
         resources:
           limits:
             memory: "512Mi"
